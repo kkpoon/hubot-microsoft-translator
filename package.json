@@ -1,0 +1,37 @@
+{
+  "name": "hubot-microsoft-translator",
+  "description": "do translation by microsoft translator",
+  "version": "0.1.0",
+  "author": "K.K. POON <noopkk@gmail.com>",
+  "license": "MIT",
+  "keywords": "hubot, hubot-scripts, translate, translation, google translate",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kkpoon/hubot-microsoft-translator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kkpoon/hubot-microsoft-translator/issues"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.16"
+  },
+  "peerDependencies": {
+    "hubot": "2.x"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-mocha-test": "~0.7.0",
+    "grunt-release": "~0.6.0",
+    "hubot": "2.x",
+    "matchdep": "~0.1.2",
+    "mocha": "*",
+    "sinon": "*",
+    "sinon-chai": "*"
+  },
+  "main": "index.coffee",
+  "scripts": {
+    "test": "grunt test"
+  }
+}
