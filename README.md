@@ -20,7 +20,13 @@ Then add **hubot-microsoft-translator** to your `external-scripts.json`:
 
 set the environment variable:
 
-`MS_TRANSLATOR_ACCESS_TOKEN=YOUR_ACCESS_TOKEN`
+```
+HUBOT_MICROSOFT_TRANSLATOR_CLIENT_ID=YOUR_MICROSOFT_TRANSLATOR_CLIENT_ID
+HUBOT_MICROSOFT_TRANSLATOR_CLIENT_SECRET=YOUR_MICROSOFT_TRANSLATOR_SECRET
+```
+
+Visit this to find out how to get the CLIENT_ID and SECRET
+- http://blogs.msdn.com/b/translation/p/gettingstarted1.aspx
 
 ## Sample Interaction
 

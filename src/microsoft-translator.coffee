@@ -68,7 +68,7 @@ languages =
 xmlParser = new xml2js.Parser()
 
 
-GetAuthHeader = (client, id, secret) ->
+GetAccessToken = (client, id, secret) ->
   return (callback) ->
     client.http('https://datamarket.accesscontrol.windows.net/v2/OAuth2-13')
       .header('Content-Type', 'application/x-www-form-urlencoded')
@@ -83,38 +83,64 @@ GetAuthHeader = (client, id, secret) ->
           return
   
         try
-          auth = JSON.parse(body)
-          authHeader = "Bearer #{auth.access_token}"
-          callback null, authHeader
+          authInfo = JSON.parse(body)
+          callback null, authInfo.access_token
 
         catch err
           callback err
 
 
+Detect = (client, auth, text) ->
+  return (callback) ->
+    client.http("#{TRANSLATOR_URL}/Detect")
+      .query({
+        text: text
+      })
+      .headers(Authorization: auth)
+      .get() (err, res, body) ->
+        if err
+          callback "Failed to detect source language: " + err
+          return
+
+        try
+          xmlParser.parseString body, (err, result) ->
+            langCode = result['string']['_']
+            callback null, langCode
+
+        catch err
+          callback "Failed to parse Detect result: #{body}, error: #{err}"
+
+
 Translate = (client, auth, text, from, to) ->
   return (callback) ->
+    doTrans = (params, callback) ->
+      client.http("#{TRANSLATOR_URL}/Translate")
+        .query(params)
+        .headers(Authorization: auth)
+        .get() (err, res, body) ->
+          if err
+            callback "Failed to translate: " + err
+            return
+
+          try
+            xmlParser.parseString body, (err, result) ->
+              translated = result['string']['_']
+              callback null, translated, params.from, params.to
+
+          catch err
+            callback "Failed to parse translate result: #{body}, error: #{err}"
+
     params = {
       text: text
       to: to
     }
     if from != 'auto'
       params.from = from
-    client.http("#{TRANSLATOR_URL}/Translate")
-      .query(params)
-      .headers(Authorization: auth)
-      .get() (err, res, body) ->
-        if err
-          callback "Failed to translate: " + err
-          return
-
-        try
-          xmlParser.parseString body, (err, result) ->
-            translated = result['string']['_']
-            callback null, translated
-
-        catch err
-          callback "Failed to parse output from Microsoft Translator: " + err + ' response: ' + body
-
+      doTrans(params, callback)
+    else
+      Detect(client, auth, text) (err, langCode) ->
+        params.from = langCode
+        doTrans(params, callback)
 
 getCode = (language,languages) ->
   for code, lang of languages
@@ -132,16 +158,19 @@ module.exports = (robot) ->
     source = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else 'auto'
     target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
 
-    GetAuthHeader(robot, CLIENT_ID, CLIENT_SECRET) (err, authHeader) ->
+    GetAccessToken(robot, CLIENT_ID, CLIENT_SECRET) (err, accessToken) ->
       if err
         msg.send "Failed to get access token from Microsoft"
         robot.emit 'error', err
         return
 
-      Translate(msg, authHeader, term, source, target) (err, translated) ->
+      authHeader = "Bearer #{accessToken}"
+
+      Translate(msg, authHeader, term, source, target) (err, trans, from, to) ->
         if err
           msg.send err
           robot.emit 'error', err
           return
 
-        msg.send "#{term} in #{source} is translated to #{target}: #{translated}"
+        msg.send "#{term} in #{languages[from]}" +
+          " is translated to #{languages[to]}: #{trans}"
