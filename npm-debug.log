@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kkpoon/.nvm/versions/node/v4.2.4/bin/node',
+1 verbose cli   '/Users/kkpoon/.nvm/versions/node/v4.2.4/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@2.14.12
+3 info using node@v4.2.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/kkpoon/Development/clustertech/hubot/hubot-microsoft-translator',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package.tgz',
+9 verbose tar pack   '/Users/kkpoon/Development/clustertech/hubot/hubot-microsoft-translator' ]
+10 verbose tarball /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package.tgz
+11 verbose folder /Users/kkpoon/Development/clustertech/hubot/hubot-microsoft-translator
+12 info prepublish hubot-microsoft-translator@0.1.0
+13 verbose addLocalTarball adding from inside cache /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package.tgz
+14 silly cache afterAdd hubot-microsoft-translator@0.1.0
+15 verbose afterAdd /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package/package.json written
+17 silly publish { name: 'hubot-microsoft-translator',
+17 silly publish   description: 'do translation by microsoft translator',
+17 silly publish   version: '0.1.0',
+17 silly publish   author: { name: 'K.K. POON', email: 'noopkk@gmail.com' },
+17 silly publish   license: 'MIT',
+17 silly publish   keywords:
+17 silly publish    [ 'hubot',
+17 silly publish      'hubot-scripts',
+17 silly publish      'translate',
+17 silly publish      'translation',
+17 silly publish      'google translate' ],
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git://github.com/kkpoon/hubot-microsoft-translator.git' },
+17 silly publish   bugs: { url: 'https://github.com/kkpoon/hubot-microsoft-translator/issues' },
+17 silly publish   dependencies: { xml2js: '^0.4.16' },
+17 silly publish   peerDependencies: { hubot: '2.x' },
+17 silly publish   devDependencies:
+17 silly publish    { chai: '*',
+17 silly publish      'grunt-cli': '^0.1.13',
+17 silly publish      'grunt-contrib-watch': '~0.5.3',
+17 silly publish      'grunt-mocha-test': '~0.7.0',
+17 silly publish      'grunt-release': '~0.6.0',
+17 silly publish      hubot: '2.x',
+17 silly publish      matchdep: '~0.1.2',
+17 silly publish      mocha: '*',
+17 silly publish      sinon: '*',
+17 silly publish      'sinon-chai': '*' },
+17 silly publish   main: 'index.coffee',
+17 silly publish   scripts: { test: 'grunt test' },
+17 silly publish   readme: '# hubot-microsoft-translator\n\nAllows Hubot to know many languages using Microsoft Translator\n\nSee [`src/microsoft-translator.coffee`](src/microsoft-translator.coffee) for full documentation.\n\n## Installation\n\nIn hubot project repo, run:\n\n`npm install hubot-microsoft-translator --save`\n\nThen add **hubot-microsoft-translator** to your `external-scripts.json`:\n\n```json\n[\n  "hubot-microsoft-translator"\n]\n```\n\nset the environment variable:\n\n```\nHUBOT_MICROSOFT_TRANSLATOR_CLIENT_ID=YOUR_MICROSOFT_TRANSLATOR_CLIENT_ID\nHUBOT_MICROSOFT_TRANSLATOR_CLIENT_SECRET=YOUR_MICROSOFT_TRANSLATOR_SECRET\n```\n\nVisit this to find out how to get the CLIENT_ID and SECRET\n- http://blogs.msdn.com/b/translation/p/gettingstarted1.aspx\n\n## Sample Interaction\n\n```\nuser> hubot translate me bienvenu\nhubot> " bienvenu" is Turkish for " Bienvenu "\nuser> hubot translate me from french into english bienvenu\nhubot> The French " bienvenu" translates as " Welcome " in English\n```\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '49c6490b7b7cb76c7465ffb1e67106bb07427637',
+17 silly publish   homepage: 'https://github.com/kkpoon/hubot-microsoft-translator#readme',
+17 silly publish   _id: 'hubot-microsoft-translator@0.1.0',
+17 silly publish   _shasum: 'a22bb6fa5f5e49b3b78198a3bbced16ed02fb150',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name hubot-microsoft-translator
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/hubot-microsoft-translator
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/kkpoon/.npm/hubot-microsoft-translator/0.1.0/package.tgz
+25 verbose request uri https://registry.npmjs.org/hubot-microsoft-translator
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 9:19:52 AM
+28 verbose request using bearer token for auth
+29 verbose request id ff0ceaae71af9a8a
+30 http request PUT https://registry.npmjs.org/hubot-microsoft-translator
+31 http 403 https://registry.npmjs.org/hubot-microsoft-translator
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Thu, 28 Jan 2016 01:19:53 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-hkg6827-HKG',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1453943992.595077,VS0,VE760' }
+33 verbose request invalidating /Users/kkpoon/.npm/registry.npmjs.org/hubot-microsoft-translator on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 0.1.0." : hubot-microsoft-translator
+35 verbose stack     at makeError (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/Users/kkpoon/.nvm/versions/node/v4.2.4/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid hubot-microsoft-translator
+38 verbose cwd /Users/kkpoon/Development/clustertech/hubot/hubot-microsoft-translator
+39 error Darwin 15.3.0
+40 error argv "/Users/kkpoon/.nvm/versions/node/v4.2.4/bin/node" "/Users/kkpoon/.nvm/versions/node/v4.2.4/bin/npm" "publish"
+41 error node v4.2.4
+42 error npm  v2.14.12
+43 error code E403
+44 error "You cannot publish over the previously published version 0.1.0." : hubot-microsoft-translator
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]

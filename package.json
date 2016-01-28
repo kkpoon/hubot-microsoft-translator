@@ -1,7 +1,7 @@
 {
   "name": "hubot-microsoft-translator",
   "description": "do translation by microsoft translator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "K.K. POON <noopkk@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, translate, translation, google translate",
